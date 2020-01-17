@@ -1,0 +1,57 @@
+spring:
+  profiles:
+    active: dev
+
+---
+server:
+  port: 7001
+
+spring:
+  profiles: dev
+  application:
+    name: springcloud-product-zuul-config
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka6001.com:6001/eureka,http://eureka6002.com:6002/eureka
+
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
+
+
+zuul:
+  routes:
+    springcloud-product:
+      path: /product/**
+      serviceId: springcloud-product-config-dev
+      stripPrefix: false
+---
+server:
+  port: 7002
+
+spring:
+  profiles: pro
+  application:
+    name: springcloud-product-zuul-config
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka6001.com:6001/eureka,http://eureka6002.com:6002/eureka
+
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
+
+zuul:
+  routes:
+    springcloud-product:
+      path: /product/**
+      serviceId: springcloud-product-config-pro
+      stripPrefix: false
