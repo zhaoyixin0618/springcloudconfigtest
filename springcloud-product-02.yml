@@ -9,7 +9,7 @@ server:
   port: 8002
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.mengxuegu.springcloud.entities
+  type-aliases-package: com.springcloud.entities
   mapper-locations: classpath:mybatis/mapper/**/*.xml
 spring:
   profiles: dev
@@ -44,7 +44,7 @@ server:
   port: 8102
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.mengxuegu.springcloud.entities
+  type-aliases-package: com.springcloud.entities
   mapper-locations: classpath:mybatis/mapper/**/*.xml
 spring:
   profiles: pro
