@@ -1,0 +1,41 @@
+spring:
+  profiles:
+    active: dev
+
+---
+server:
+  port: 6001
+spring:
+  profiles: dev
+  application:
+    name: springcloud-eureka-config
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:6002/eureka/
+  server:
+    enable-self-preservation: false
+
+---
+server:
+  port: 6101
+spring:
+  profiles: pro
+  application:
+    name: springcloud-eureka-config
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:6102/eureka/
+  server:
+    enable-self-preservation: true
